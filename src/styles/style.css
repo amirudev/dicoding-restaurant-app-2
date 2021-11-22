@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Nunito', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: white;
+    position: sticky;
+    z-index: 99;
+    top: 0;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.app-bar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+   
+  .app-bar .app-bar__menu {
+    display: flex;
+    align-items: center;
+  }
+   
+  .app-bar .app-bar__menu button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+  }
+   
+  .app-bar .app-bar__brand {
+    display: flex;
+    align-items: center;
+  }
+   
+  .app-bar .app-bar__brand h1 {
+    color: #db0000;
+    text-transform: uppercase;
+    font-size: 22px;
+    user-select: none;
+  }
+   
+  .app-bar .app-bar__navigation {
+    position: absolute;
+    top: 50px;
+    left: -180px;
+    width: 150px;
+    transition: all 0.3s;
+    background-color: white;
+    overflow: hidden;
+  }
+
+  .app-bar .app-bar__navigation ul {
+      padding: 0;
+      margin: 0;
+  }
+   
+  .app-bar .app-bar__navigation.open {
+    left: 0;
+  }
+   
+  .app-bar .app-bar__navigation ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 8px;
+    margin-bottom: 5px;
+    width: 100%;
+    padding: 25px 0;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: tomato;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    text-decoration: none;
+ }
+  
+.skip-link:focus {
+    top: 66px;
+}
+
+footer {
+    background-color: rgb(240, 240, 240);
+}
+
+footer .footer-container {
+    padding: 1rem;
+    text-align: center;
+}
+
+footer .footer-container p {
+    margin: 0;
+}
