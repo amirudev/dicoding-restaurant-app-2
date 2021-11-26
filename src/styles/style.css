@@ -14,9 +14,9 @@ header {
 }
 
 .app-bar {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 10px;
+    /* display: grid;
+    grid-template-columns: auto 1fr auto; */
+    display: flex;
     max-width: 1300px;
     margin: 0 auto;
   }
@@ -27,10 +27,11 @@ header {
   }
    
   .app-bar .app-bar__menu button {
+    display: flex;
     background-color: transparent;
     border: none;
     font-size: 18px;
-    padding: 8px;
+    padding: 14px;
     cursor: pointer;
   }
    
@@ -47,18 +48,20 @@ header {
   }
    
   .app-bar .app-bar__navigation {
+    display: flex;
+    justify-content: end;
     position: absolute;
-    top: 50px;
+    top: 66px;
     left: -180px;
-    width: 150px;
     transition: all 0.3s;
     background-color: white;
     overflow: hidden;
   }
-
+  
   .app-bar .app-bar__navigation ul {
-      padding: 0;
-      margin: 0;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
   }
    
   .app-bar .app-bar__navigation.open {
@@ -69,10 +72,10 @@ header {
     display: inline-block;
     text-decoration: none;
     color: black;
-    padding: 8px;
     margin-bottom: 5px;
     width: 100%;
-    padding: 25px 0;
+    padding: 22px 30px;
+    font-weight: bold;
   }
 
   .skip-link {
@@ -101,4 +104,244 @@ footer .footer-container {
 
 footer .footer-container p {
     margin: 0;
+}
+
+.responsive-container {
+  margin: 0 auto;
+}
+
+.hero .hero-title-container {
+  margin: 1rem;
+}
+
+.hero .hero-title {
+  display: flex;
+  justify-content: center;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: absolute;
+  top: 125px;
+  width: 100%;
+  color: white;
+}
+
+.hero .hero-title h1 {
+  font-size: 24px;
+}
+
+.hero img {
+  width: 100%;
+  height: 512px;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.list-restaurant {
+  max-width: 1366px;
+  margin: 0 auto;
+}
+
+.list-restaurant .list-restaurant-title {
+  text-align: center;
+}
+
+.list-restaurant .restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list-restaurant .restaurant-list .restaurant-item {
+  max-width: 375px;
+  margin: 0.75rem;
+  box-shadow: 0 0 1px 1px rgb(200, 200, 200);
+  position: relative;
+}
+
+.list-restaurant .restaurant-list .restaurant-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-city {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: tomato;
+  padding: 8px 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-city svg {
+  width: 20px;
+  height: 20px;
+  padding-right: 4px;
+  color: white;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-city p {
+  margin: 0;
+  color: white;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-detail {
+  padding: 1rem;
+}
+
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-detail h5 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-detail p {
+  margin: 0;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-detail .restaurant-item-detail-info {
+  margin-top: 10px;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-detail .restaurant-item-detail-info p {
+  display: flex;
+  align-items: center;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-detail .restaurant-item-detail-info svg {
+  width: 20px;
+  padding-right: 4px;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-detail .restaurant-item-button-container {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.list-restaurant .restaurant-list .restaurant-item .restaurant-item-detail a {
+  padding: 11px 2rem;
+  border-radius: 4px;
+  background-color: tomato;
+  color: white;
+  text-decoration: none;
+}
+
+.restaurant-detail {
+  display: flex;
+}
+
+.restaurant-rating {
+  color: black;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.restaurant-detail .detail-main {
+  padding: 1.5rem;
+}
+
+.restaurant-detail .detail-main__block {
+  border: 1px solid gainsboro;
+}
+
+.restaurant-detail .detail-main img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.restaurant-detail .main-title {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.restaurant-detail .main-title h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.restaurant-detail .main-title__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.restaurant-detail .detail-sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  padding: 0.5rem;
+}
+
+.restaurant-detail .main-navigation {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid gainsboro;
+  margin: 10px 0;
+  padding: 1rem;
+}
+
+.restaurant-detail .main-navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.restaurant-detail .main-navigation ul li a {
+  padding: 1rem;
+  color: black;
+  text-decoration: none;
+}
+
+.restaurant-detail .favorite-button {
+  border: 1px solid red;
+  border-radius: 10px;
+  color: red;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  background-color: transparent;
+}
+
+.restaurant-detail .favorite-button.active {
+  font-family: 'Nunito', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  background-color: red;
+}
+
+.restaurant-detail .description-container {
+  padding: 1rem;
+  border: 1px solid gainsboro;
+}
+
+.restaurant-detail .description-container h3 {
+  margin-top: 0;
+}
+
+.restaurant-detail .description-container .main-content__menu-container {
+  display: flex;
+}
+
+.restaurant-detail .description-container .main-content__menu-container > div {
+  padding-right: 2rem;
+}
+
+.restaurant-detail .review .review__review-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.restaurant-detail .review .review__review-title p {
+  margin: 0;
+}
+
+.restaurant-detail .review__review-container .review__review-item .review__review-item-name {
+  font-weight: bold;
+}
+
+.restaurant-detail .review__review-container .review__review-item .review__review-item-review-date {
+  color: grey;
+  font-style: italic;
 }

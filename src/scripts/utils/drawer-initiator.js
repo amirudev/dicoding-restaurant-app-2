@@ -9,11 +9,15 @@ const DrawerInitiator = {
         });
     },
 
-    _toggleDrawer(){
-
+    _toggleDrawer(event, drawer){
+        event.stopPropagation();
+        drawer.classList.toggle('open');
     },
 
-    _closeDrawer(){
-        
+    _closeDrawer(event, drawer){
+        event.stopPropagation();
+        drawer.classList.remove('open');
     }
 }
+
+export default DrawerInitiator;
