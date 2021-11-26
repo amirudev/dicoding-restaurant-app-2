@@ -32,7 +32,7 @@ const createDetailRestaurantItem = restaurant => {
     <section class="restaurant-detail">
         <div class="detail-main">
             <div class="detail-main__block">
-                <img src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}"></img>
+                <img src="${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}"></img>
                 <div class="main-title">
                     <div>
                         <h2 class="main-title__title">${restaurant.name}</h2>
