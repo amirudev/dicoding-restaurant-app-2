@@ -2,7 +2,7 @@
     "name": "Madang D'Seat Restaurant App",
     "short_name": "Madang D'Seat",
     "description": "Restaurant App to help you find best restaurant",
-    "start_url": "/index.html",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#f54701",
