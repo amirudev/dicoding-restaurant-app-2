@@ -39,6 +39,11 @@
   },
   "dependencies": {
     "regenerator-runtime": "^0.13.9",
+    "workbox-cacheable-response": "^6.4.1",
+    "workbox-expiration": "^6.4.1",
+    "workbox-precaching": "^6.4.1",
+    "workbox-routing": "^6.4.1",
+    "workbox-strategies": "^6.4.1",
     "workbox-window": "^6.4.1"
   }
 }
