@@ -7,27 +7,24 @@ const assetsToCache = [
     '/bundle.js'
 ];
 
-const { Workbox } = import('workbox-window');
-const wb = new Workbox('/service-worker.js');
-
-wb.addEventListener('installing', event => {
+self.addEventListener('installing', event => {
     console.log('Installing Service Worker ...');
 });
 
-wb.addEventListener('installed', (event) => {
+self.addEventListener('installed', (event) => {
     caches.open(CACHE_NAME).then((cache) => {
         caches.addAll(assetsToCache);
     });
 });
 
-wb.addEventListener('activating', event => {
+self.addEventListener('activating', event => {
     console.log('Activating Service Worker ...');
 });
 
-wb.addEventListener('activated', (event) => {
+self.addEventListener('activated', (event) => {
     caches.keys().then(cacheNames => Promise.all(cacheNames.filter(name => name !== CACHE_NAME).map(filteredName => caches.delete(filteredName))));
 });
 
-wb.addEventListener('message', (event) => {
+self.addEventListener('message', (event) => {
     console.log(event);
 });
