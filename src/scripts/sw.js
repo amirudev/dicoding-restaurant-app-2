@@ -10,10 +10,18 @@ const assetsToCache = [
 const { Workbox } = import('workbox-window');
 const wb = new Workbox('/service-worker.js');
 
+wb.addEventListener('installing', event => {
+    console.log('Installing Service Worker ...');
+});
+
 wb.addEventListener('installed', (event) => {
     caches.open(CACHE_NAME).then((cache) => {
         caches.addAll(assetsToCache);
     });
+});
+
+wb.addEventListener('activating', event => {
+    console.log('Activating Service Worker ...');
 });
 
 wb.addEventListener('activated', (event) => {

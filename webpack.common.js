@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
+const { Workbox } = require('workbox-window');
  
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
