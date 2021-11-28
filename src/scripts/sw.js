@@ -1,40 +1,36 @@
-// importScripts('workbox-precaching');
+import 'regenerator-runtime';
 import { precacheAndRoute } from "workbox-precaching";
+import CONFIG from './global/config';
+import CacheHelper from "./utils/cache-helper";
 
-const version = '1.0.0';
-const CACHE_NAME = `mypwa-${version}`;
 const assetsToCache = [
-    '/',
-    '/index.html',
-    '/manifest.json',
-    '/bundle.js',
-    // .......
-   ];
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/bundle.js',
+];
+const cacheAvailable = 'caches' in self;
 
 precacheAndRoute(self.__WB_MANIFEST);
-    
+
 self.addEventListener('install', (event) => {
   console.log('Installing service worker....');
   
-  self.skipWaiting();
-  
-  // menyimpan appshell ke caches API
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(assetsToCache),),
+    CacheHelper.cachingAppShell(assetsToCache),
   );
-
-  console.log(event);
 });
 
 self.addEventListener('activate', (event) => {
   console.log('Activating service worker...');
-  
-  // menghapus caches lama
+
   event.waitUntil(
-    caches.keys()
-      .then((cacheNames) => Promise.all(
-        cacheNames.filter((name) => name !== CACHE_NAME)
-          .map((filteredName) => caches.delete(filteredName))
-      )),
+    CacheHelper.deleteOldCache(),
   );
- });
+});
+
+self.addEventListener('fetch', (event) => {
+  console.log(event.request);
+ 
+  event.respondWith(CacheHelper.revalidateCache(event.request));
+});
