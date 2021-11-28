@@ -4,7 +4,6 @@ import CONFIG from './global/config';
 import CacheHelper from "./utils/cache-helper";
 
 const assetsToCache = [
-  '/',
   '/index.html',
   '/manifest.json',
   '/bundle.js',
