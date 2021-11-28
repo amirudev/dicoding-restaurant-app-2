@@ -37,9 +37,8 @@ module.exports = {
         },
       ],
     }),
-    new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true,
-    }),
+    new WorkboxPlugin.InjectManifest({
+      swSrc: path.resolve(__dirname, 'src/scripts/sw.js'),
+    })
   ],
 };
