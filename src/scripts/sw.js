@@ -6,7 +6,6 @@ import { precacheAndRoute } from "workbox-precaching";
 import { NavigationRoute, registerRoute } from 'workbox-routing';
 import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import CONFIG from './global/config';
-// import CacheHelper from "./cache-helper";
 
 const assetsToCache = [
   '/index.html',
@@ -26,30 +25,6 @@ self.addEventListener('installed', event => {
     }
   }
 });
-
-// self.addEventListener('install', (event) => {
-//   console.log('Installing service worker....');
-  
-//   event.waitUntil(
-//     // CacheHelper.cachingAppShell(assetsToCache),
-//     caches.open(CONFIG.CACHE_NAME)
-//     .then(cache => cache.add(CONFIG.FALLBACK_HTML_URL))
-//   );
-// });
-
-// self.addEventListener('activate', (event) => {
-//   console.log('Activating service worker...');
-
-//   event.waitUntil(
-//     // CacheHelper.deleteOldCache(),
-//   );
-// });
-
-// self.addEventListener('fetch', (event) => {
-//   console.log(event.request);
- 
-//   // event.respondWith(CacheHelper.revalidateCache(event.request));
-// });
 
 registerRoute(
   ({url}) => url.origin === 'https://fonts.googleapis.com',
@@ -74,25 +49,8 @@ registerRoute(
   })
 );
 
-// registerRoute(
-//   ({url}) => url.origin === CONFIG.BASE_URL && url.pathname.startsWith('/list'),
-//   new StaleWhileRevalidate({
-//     cacheName: `${CONFIG.CACHE_NAME}-api-response`,
-//     plugins:[
-//       new CacheableResponsePlugin({
-//         statuses: [0, 200]
-//       }),
-//       new ExpirationPlugin({
-//         maxEntries: 60,
-//         maxAgeSeconds: 60 * 60 * 24 * 30,
-//       }),
-//     ]
-//   })
-// );
-
 registerRoute(
-  ({url}) => url.origin === CONFIG.BASE_URL &&
-             url.pathname.startsWith('/'),
+  new RegExp(CONFIG.BASE_URL),
   new CacheFirst({
     cacheName: `${CONFIG.CACHE_NAME}-api-response`,
     plugins: [
