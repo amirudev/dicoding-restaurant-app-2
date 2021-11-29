@@ -3,7 +3,11 @@ const CONFIG = {
     BASE_IMAGE_URL_SMALL: 'https://restaurant-api.dicoding.dev/images/small/',
     BASE_IMAGE_URL_LARGE: 'https://restaurant-api.dicoding.dev/images/large/',
     CACHE_NAME: 'MadangDseat-V1',
-    FALLBACK_HTML_URL: 'offline.html',
+    FONT_STYLESHEET_URL: 'https://fonts.googleapis.com',
+    FONT_WEBFONT_URL: 'https://fonts.gstatic.com',
+    
+    MODE: 'DEVELOPMENT',
+    DEFAULT_CACHE_EXPIRED: 60 * 60 * 24 * 30,
 }
 
 export default CONFIG;

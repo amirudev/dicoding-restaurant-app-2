@@ -14,72 +14,47 @@ const assetsToCache = [
 ];
 const cacheAvailable = 'caches' in self;
 
-clientsClaim();
-self.skipWaiting();
 precacheAndRoute(self.__WB_MANIFEST);
 
-self.addEventListener('installed', event => {
-  if(event.isUpdate){
-    if(confirm('New app update is available, Click OK to refresh app')){
-      window.location.reload();
+if(CONFIG.MODE == 'PRODUCTION'){
+  clientsClaim();
+  self.skipWaiting();
+  
+  self.addEventListener('installed', event => {
+    if(event.isUpdate){
+      if(confirm('New app update is available, Click OK to refresh app')){
+        window.location.reload();
+      }
     }
-  }
-});
+  });
+  
+  registerRoute(
+    new CacheHelper.cacheFontStylesheet(),
+  );
+  
+  registerRoute(
+    new CacheHelper.cacheFontWebfonts(),
+  );
+  
+  registerRoute(
+    new CacheHelper.cacheApiResponse(),
+  );
+  
+  registerRoute(
+    new CacheHelper.cacheAssetsImages(),
+  );
+  
+  registerRoute(
+    new CacheHelper.cacheAssetsResources(),
+  )
+} else {
+  caches.keys()
+  .then(cacheNames => {
+    cacheNames.forEach(cacheName => {
+      caches.delete(cacheName);
+    });
+  });
 
-registerRoute(
-  ({url}) => url.origin === 'https://fonts.googleapis.com',
-  new StaleWhileRevalidate({
-    cacheName: `${CONFIG.CACHE_NAME}-google-fonts-stylesheets`,
-  })
-);
-
-registerRoute(
-  ({url}) => url.origin === 'https://fonts.gstatic.com',
-  new CacheFirst({
-    cacheName: `${CONFIG.CACHE_NAME}-google-fonts-webfonts`,
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0, 200],
-      }),
-      new ExpirationPlugin({
-        maxAgeSeconds: 60 * 60 * 24 * 365,
-        maxEntries: 30,
-      }),
-    ],
-  })
-);
-
-registerRoute(
-  new RegExp(CONFIG.BASE_URL),
-  new CacheFirst({
-    cacheName: `${CONFIG.CACHE_NAME}-api-response`,
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0, 200],
-      })
-    ]
-  })
-);
-
-registerRoute(
-  ({request}) => request.destination == 'image',
-  new CacheFirst({
-    cacheName: `${CONFIG.CACHE_NAME}-images`,
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0, 200]
-      }),
-      new ExpirationPlugin({
-        maxEntries: 60,
-        maxAgeSeconds: 60 * 60 * 24 * 30,
-      }),
-    ]
-  })
-);
-
-registerRoute(
-  ({request}) => request.destination === 'script' || request.destination === 'style',
-  new StaleWhileRevalidate({
-    cacheName: `${CONFIG.CACHE_NAME}-static-resources`
-  })
-)
+  console.log(`You're running on Development mode, caches are deleted and disabled, please refer to .env in root folder in order to change to Production mode`);
+  console.log(`Mode: ${process.env.MODE}`);
+}

@@ -1,66 +1,61 @@
-// import { CacheableResponsePlugin } from "workbox-cacheable-response";
-// import { ExpirationPlugin } from "workbox-expiration";
-// import { NavigationRoute, registerRoute } from "workbox-routing";
-// import { CacheFirst, StaleWhileRevalidate } from "workbox-strategies";
-// import CONFIG from "../global/config";
+const { CONFIG } = require("../global/config")
 
-// // const staleWhileRevalidate = new StaleWhileRevalidate();
-// const CacheHelper = {
-//     // async cachingAppShell(requests){
-//     //     const cache = await this._openCache();
-//     //     cache.addAll(requests);
-//     // },
+const CacheHelper = {
+    async cacheFontStylesheet(){
+        ({url}) => url.origin === CONFIG.FONT_STYLESHEET_URL,
+        new StaleWhileRevalidate({
+            cacheName: `${CONFIG.CACHE_NAME}-google-fonts-stylesheets`,
+        })
+    },
 
-//     // async deleteOldCache(){
-//     //     const cacheNames = await caches.keys();
-//     //     cacheNames
-//     //     .filter(name => name !== CONFIG.CACHE_NAME)
-//     //     .map(filteredName => caches.delete(filteredName));
-//     // },
+    async cacheFontWebfonts(){
+        ({url}) => url.origin === CONFIG.FONT_WEBFONT_URL,
+        new CacheFirst({
+            cacheName: `${CONFIG.CACHE_NAME}-google-fonts-webfonts`,
+            plugins: [
+                new CacheableResponsePlugin({
+                    statuses: [0, 200],
+                }),
+                new ExpirationPlugin({
+                    maxAgeSeconds: CONFIG.DEFAULT_CACHE_EXPIRED,
+                }),
+            ],
+        })
+    },
 
-//     // async revalidateCache(request){
-//     //     const response = await caches.match(request);
+    async cacheApiResponse(){
+        new RegExp(CONFIG.BASE_URL),
+        new StaleWhileRevalidate({
+            cacheName: `${CONFIG.CACHE_NAME}-api-response`,
+            plugins: [
+                new CacheableResponsePlugin({
+                    statuses: [0, 200],
+                })
+            ]
+        })
+    },
 
-//     //     if(response){
-//     //         return response;
-//     //     }
+    async cacheAssetsImages(){
+        ({request}) => request.destination == 'image',
+        new CacheFirst({
+            cacheName: `${CONFIG.CACHE_NAME}-images`,
+            plugins: [
+                new CacheableResponsePlugin({
+                    statuses: [0, 200]
+                }),
+                new ExpirationPlugin({
+                    maxAgeSeconds: CONFIG.DEFAULT_CACHE_EXPIRED,
+                }),
+            ]
+        })
+    },
 
-//     //     return this._fetchRequest(request);
-//     // },
+    async cacheAssetsResources(){
+        ({request}) => request.destination === 'script' || request.destination === 'style',
+        new StaleWhileRevalidate({
+            cacheName: `${CONFIG.CACHE_NAME}-static-resources`
+        })
+    }
+}
 
-//     // async _openCache(){
-//     //     return caches.open(CONFIG.CACHE_NAME);
-//     // },
-
-//     // async _fetchRequest(request){
-//     //     const response = await fetch(request);
-
-//     //     if(!response || response.status !== 200){
-//     //         return response;
-//     //     }
-
-//     //     await this._addCache(request);
-//     //     return response;
-//     // },
-
-//     // async _addCache(request){
-//     //     const cache = await this._openCache();
-//     //     cache.add(request);
-//     // },
-
-//     // async staleRevalidateCache(params) {
-//     //     try {
-//     //         return await staleWhileRevalidate.handle(params);
-//     //     } catch (err) {
-//     //         return caches.match(CONFIG.FALLBACK_HTML_URL, {
-//     //             cacheName: CONFIG.CACHE_NAME,
-//     //         });
-//     //     }
-//     // },
-
-//     // async staleWhileRevalidate(){
-//     //     return workbox.strategies.StaleWhileRevalidate();
-//     // }
-// }
-
-// export default CacheHelper;
+export default CacheHelper;

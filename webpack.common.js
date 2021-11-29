@@ -40,6 +40,6 @@ module.exports = {
     new WorkboxPlugin.InjectManifest({
       swSrc: path.resolve(__dirname, 'src/scripts/sw.js'),
       swDest: path.resolve(__dirname, 'dist/sw.js'),
-    })
+    }),
   ],
 };
