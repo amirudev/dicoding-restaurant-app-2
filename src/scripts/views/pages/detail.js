@@ -1,6 +1,7 @@
 import RestaurantApiSource from "../../data/restaurantsapi-source";
 import UrlParser from "../../routes/url-parser";
-import { createDetailRestaurantItem } from "../templates/template-creator";
+import LikeButtonInitiator from "../../utils/like-button-initiator";
+import { createDetailRestaurantItem, createLikeButtonTemplate } from "../templates/template-creator";
 
 const Detail = {
     async render(){
@@ -15,13 +16,33 @@ const Detail = {
 
     async afterRender(){
         const url = UrlParser.parseActiveUrlWithoutCombiner();
-        const restaurant = await RestaurantApiSource.detailRestaurant(url.id);
+        let restaurant = await RestaurantApiSource.detailRestaurant(url.id);
+
         if(restaurant.errors){
             alert('Terjadi kesalahan');
         }
 
+        restaurant = restaurant.restaurant;
+
         const restaurantContainer = document.querySelector("#restaurant");
-        restaurantContainer.innerHTML = createDetailRestaurantItem(restaurant.restaurant);
+        restaurantContainer.innerHTML = createDetailRestaurantItem(restaurant);
+
+        const likeButtonContainer = document.querySelector("#restaurant-like-container");
+        likeButtonContainer.innerHTML = createLikeButtonTemplate();
+
+        console.log(restaurant);
+
+        LikeButtonInitiator.init({
+            likeButtonContainer: document.querySelector('#restaurant-like-container'),
+            restaurant: {
+                id: restaurant.id,
+                name: restaurant.name,
+                description: restaurant.description,
+                city: restaurant.city,
+                rating: restaurant.rating,
+                pictureId: restaurant.pictureId,
+            }
+        });
     }
 }
 

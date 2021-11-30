@@ -5,8 +5,11 @@ const CONFIG = {
     CACHE_NAME: 'MadangDseat-V1',
     FONT_STYLESHEET_URL: 'https://fonts.googleapis.com',
     FONT_WEBFONT_URL: 'https://fonts.gstatic.com',
+
+    DATABASE_NAME: 'restaurants-finder-database',
+    DATABASE_VERSION: 1,
+    OBJECT_STORE_NAME: 'restaurants',
     
-    MODE: 'DEVELOPMENT',
     DEFAULT_CACHE_EXPIRED: 60 * 60 * 24 * 30,
 }
 

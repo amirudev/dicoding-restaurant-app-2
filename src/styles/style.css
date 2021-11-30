@@ -296,19 +296,21 @@ footer .footer-container p {
   text-decoration: none;
 }
 
-.restaurant-detail .favorite-button {
-  border: 1px solid red;
-  border-radius: 10px;
-  color: red;
-  font-weight: bold;
-  padding: 0.75rem 2rem;
-  background-color: transparent;
-}
-
-.restaurant-detail .favorite-button.active {
-  font-family: 'Nunito', Tahoma, Geneva, Verdana, sans-serif;
+.restaurant-detail .main-navigation .main-navigation__like-container .like {
+  font-size: 18px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background-color: #db0000;
   color: white;
-  background-color: red;
+  border: 0;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .restaurant-detail .description-container {
