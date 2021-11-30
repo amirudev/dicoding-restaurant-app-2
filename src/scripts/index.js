@@ -3,6 +3,7 @@ import '../styles/style.css';
 import '../styles/responsive.css';
 import App from './views/app';
 import swRegister from './utils/sw-register';
+import CONFIG from './global/config';
 
 const app = new App({
     button: document.querySelector('#hamburgerButton'),
@@ -16,5 +17,10 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
     app.renderPage();
-    swRegister();
+    if(CONFIG.MODE == 'PRODUCTION'){
+        swRegister();
+    } else {
+        
+  console.log(`You're running on Development mode`);
+    }
 });

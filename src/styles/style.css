@@ -229,6 +229,7 @@ footer .footer-container p {
 
 .restaurant-detail {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .restaurant-rating {
@@ -236,10 +237,6 @@ footer .footer-container p {
   font-weight: bold;
   margin: 0;
   padding: 0;
-}
-
-.restaurant-detail .detail-main {
-  padding: 1.5rem;
 }
 
 .restaurant-detail .detail-main__block {
@@ -269,9 +266,9 @@ footer .footer-container p {
 }
 
 .restaurant-detail .detail-sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  padding: 0.5rem;
+  padding: 1.5rem;
+  width: 100%;
+  min-width: 200px;
 }
 
 .restaurant-detail .main-navigation {
@@ -324,6 +321,7 @@ footer .footer-container p {
 
 .restaurant-detail .description-container .main-content__menu-container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .restaurant-detail .description-container .main-content__menu-container > div {

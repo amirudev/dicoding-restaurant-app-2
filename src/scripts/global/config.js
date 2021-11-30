@@ -11,6 +11,8 @@ const CONFIG = {
     OBJECT_STORE_NAME: 'restaurants',
     
     DEFAULT_CACHE_EXPIRED: 60 * 60 * 24 * 30,
+
+    MODE: 'DEVELOPMENT',
 }
 
 export default CONFIG;
