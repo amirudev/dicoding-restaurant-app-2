@@ -1,7 +1,7 @@
 import RestaurantApiSource from "../../data/restaurantsapi-source";
 import UrlParser from "../../routes/url-parser";
 import LikeButtonInitiator from "../../utils/like-button-initiator";
-import { createDetailRestaurantItem, createLikeButtonTemplate } from "../templates/template-creator";
+import { createDetailRestaurantItem, createLikeButtonTemplate, createReviewBoxTemplate, createReviewedBoxTemplate } from "../templates/template-creator";
 
 const Detail = {
     async render(){
@@ -24,6 +24,8 @@ const Detail = {
 
         restaurant = restaurant.restaurant;
 
+        console.log(restaurant);
+
         const restaurantContainer = document.querySelector("#restaurant");
         restaurantContainer.innerHTML = createDetailRestaurantItem(restaurant);
 
@@ -42,6 +44,28 @@ const Detail = {
                 rating: restaurant.rating,
                 pictureId: restaurant.pictureId,
             }
+        });
+
+        const writeReviewContainer = document.querySelector('#write-review-container');
+        writeReviewContainer.innerHTML = createReviewBoxTemplate();
+
+        const addNewReviewButton = document.querySelector('#add-new-review-button');
+        addNewReviewButton.addEventListener('click', () => {
+            let name = document.querySelector('#input-name').value;
+            let review = document.querySelector('#input-review').value;
+
+            let reviewPost = RestaurantApiSource.addNewReview({
+                id: restaurant.id,
+                name: name,
+                review: review,
+            });
+
+            reviewPost.then(response => {
+                let submittedComment = response.customerReviews[response.customerReviews.length - 1];
+                writeReviewContainer.innerHTML = createReviewedBoxTemplate(submittedComment.review);
+            }).catch(error => {
+                alert(error);
+            });
         });
     }
 }

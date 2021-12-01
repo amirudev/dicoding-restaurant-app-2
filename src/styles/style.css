@@ -14,80 +14,86 @@ header {
 }
 
 .app-bar {
-    /* display: grid;
-    grid-template-columns: auto 1fr auto; */
-    display: flex;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-   
-  .app-bar .app-bar__menu {
-    display: flex;
-    align-items: center;
-  }
-   
-  .app-bar .app-bar__menu button {
-    display: flex;
-    background-color: transparent;
-    border: none;
-    font-size: 18px;
-    padding: 14px;
-    cursor: pointer;
-  }
-   
-  .app-bar .app-bar__brand {
-    display: flex;
-    align-items: center;
-  }
-   
-  .app-bar .app-bar__brand h1 {
-    color: #db0000;
-    text-transform: uppercase;
-    font-size: 22px;
-    user-select: none;
-  }
-   
-  .app-bar .app-bar__navigation {
-    display: flex;
-    justify-content: end;
-    position: absolute;
-    top: 66px;
-    left: -180px;
-    transition: all 0.3s;
-    background-color: white;
-    overflow: hidden;
-  }
+  /* display: grid;
+  grid-template-columns: auto 1fr auto; */
+  display: flex;
+  max-width: 1300px;
+  margin: 0 auto;
+}
   
-  .app-bar .app-bar__navigation ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-  }
-   
-  .app-bar .app-bar__navigation.open {
-    left: 0;
-  }
-   
-  .app-bar .app-bar__navigation ul li a {
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    margin-bottom: 5px;
-    width: 100%;
-    padding: 22px 30px;
-    font-weight: bold;
-  }
+.app-bar .app-bar__menu {
+  display: flex;
+  align-items: center;
+}
+  
+.app-bar .app-bar__menu button {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  padding: 14px;
+  cursor: pointer;
+}
+  
+.app-bar .app-bar__brand {
+  display: flex;
+  align-items: center;
+}
+  
+.app-bar .app-bar__brand h1 {
+  color: #db0000;
+  text-transform: uppercase;
+  font-size: 22px;
+  user-select: none;
+}
+  
+.app-bar .app-bar__navigation {
+  display: inline-block;
+  position: absolute;
+  top: 66px;
+  left: -400px;
+  transition: all 0.3s;
+  background-color: white;
+  overflow: hidden;
+  width: 50vw;
+  height: 100vh;
+}
 
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background-color: tomato;
-    color: white;
-    padding: 8px;
-    z-index: 100;
-    text-decoration: none;
- }
+.app-bar .app-bar__navigation ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  width: 100%;
+}
+  
+.app-bar .app-bar__navigation.open {
+  left: 0;
+}
+
+.app-bar .app-bar__navigation ul li {
+  padding: 0 1rem;
+}
+  
+.app-bar .app-bar__navigation ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 22px 0;
+  font-weight: bold;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: tomato;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+}
   
 .skip-link:focus {
     top: 66px;
@@ -298,7 +304,7 @@ footer .footer-container p {
   position: fixed;
   bottom: 16px;
   right: 16px;
-  background-color: #db0000;
+  background-color: #fa4b3d;
   color: white;
   border: 0;
   border-radius: 50%;
@@ -344,4 +350,61 @@ footer .footer-container p {
 .restaurant-detail .review__review-container .review__review-item .review__review-item-review-date {
   color: grey;
   font-style: italic;
+}
+
+.restaurant-detail .review-box .review-box__title-box h4 {
+  margin-bottom: 10px;
+}
+
+
+.restaurant-detail .review-box .review-box__title-box p {
+  margin-top: 10px;
+}
+
+.restaurant-detail .review-box .review-box__input-box textarea {
+  border-color: lightgrey;
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  padding: 10px;
+}
+
+.restaurant-detail .review-box .review-box__input-box textarea:focus {
+  outline: none;
+}
+
+.restaurant-detail .review-box .review-box__input-box input {
+  height: 25px;
+  padding: 4px 10px;
+  border: none;
+}
+
+.restaurant-detail .review-box .review-box__input-box input:focus {
+  outline: none;
+}
+
+.restaurant-detail .review-box .review-box__textinput-box {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+}
+
+.restaurant-detail .review-box .review-box__submit-box {
+  display: flex;
+  justify-content: end;
+}
+
+.restaurant-detail .review-box .review-box__input-box button {
+  width: 100px;
+  height: 35px;
+  background-color: #fa4b3d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.restaurant-detail .review-box .review-box__review-input {
+  width: 100%;
 }

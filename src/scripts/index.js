@@ -20,7 +20,6 @@ window.addEventListener('load', () => {
     if(CONFIG.MODE == 'PRODUCTION'){
         swRegister();
     } else {
-        
-  console.log(`You're running on Development mode`);
+        console.log(`You're running on Development mode`);
     }
 });

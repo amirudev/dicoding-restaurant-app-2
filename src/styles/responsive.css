@@ -1,6 +1,6 @@
 @media screen and (min-width: 650px) {
     .app-bar {
-        grid-template-columns: 1fr auto;
+        justify-content: space-between;
     }
    
     .app-bar .app-bar__brand h1 {
@@ -13,7 +13,9 @@
    
     .app-bar .app-bar__navigation {
         position: static;
-        width: 100%;
+        width: fit-content;
+        display: flex;
+        height: fit-content;
     }
    
     .app-bar .app-bar__navigation ul li {

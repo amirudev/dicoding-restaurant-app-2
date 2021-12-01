@@ -21,7 +21,7 @@ const createRestaurantItemTemplate = restaurant => {
                 ${restaurant.city}</p>
         </div>
         <div class="restaurant-item-button-container">
-            <a href="./#/detail/${restaurant.id}">Kunjungi Restoran</a>
+            <a href="./#/detail/${restaurant.id}" aria-label="Kunjungi restoran ${restaurant.name} di ${restaurant.city}">Kunjungi Restoran</a>
         </div>
     </div>
 </div>`;
@@ -86,6 +86,8 @@ const createDetailRestaurantItem = restaurant => {
                     <h3 class="main-content__title">Review</h3>
                 </div>
                 <hr>
+                <div class="review__write-review-container" id="write-review-container"></div>
+                <hr>
                 <div class="review__review-container">
                     ${createReviewItemList(restaurant.customerReviews)}
                 </div>
@@ -131,9 +133,45 @@ const createLikedButtonTemplate = () => {
     </button>`;
 }
 
+const createReviewBoxTemplate = () => {
+    return `
+        <div class="review-box">
+            <div class="review-box__title-box">
+                <h4>Tambahkan Review</h4>
+                <p>Bagaimana pengalamanmu saat makan disini ? Ayo bagikan pengalamanmu disini</p>
+            </div>
+            <div class="review-box__input-box">
+                <div class="review-box__textinput-box">
+                    <input type="text" name="name" placeholder="Nama" id="input-name"></input>
+                </div>
+                <textarea class="review-box__review-input" placeholder="Review Restoran" id="input-review"></textarea>
+                <div class="review-box__submit-box">
+                    <button type="submit" id="add-new-review-button">Kirim</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+const createReviewedBoxTemplate = (reviewText) => {
+    return `
+    <div class="review-box">
+        <div class="review-box__title-box">
+            <h4>Review berhasil ditambahkan</h4>
+            <p>Terima kasih telah memberikan penilaian mengenai restoran ini !</p>
+        </div>
+        <div class="review-box__input-box">
+            <i>${reviewText}</i>
+        </div>
+    </div>
+    `;
+}
+
 export { 
     createRestaurantItemTemplate, 
     createDetailRestaurantItem,
     createLikeButtonTemplate,
-    createLikedButtonTemplate, 
+    createLikedButtonTemplate,
+    createReviewBoxTemplate,
+    createReviewedBoxTemplate,
 };
