@@ -11,5 +11,9 @@
         "sourceType": "module"
     },
     "rules": {
+        "no-param-reassign":"off",
+        "no-restricted-globals":"off",
+        "no-underscore-dangle":"off",
+        "no-extranuous-dependencies": "off"
     }
 }

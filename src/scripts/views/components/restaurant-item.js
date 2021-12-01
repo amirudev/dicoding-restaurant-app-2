@@ -1,29 +1,20 @@
 import CONFIG from '../../global/config';
 
-class Restaurant {
-    constructor(pictureId, name, description, city, rating){
-        this.pictureId = pictureId;
-        this.name = name;
-        this.description = description;
-        this.city = city;
-        this.rating = rating;
-    }
-}
+import Restaurant from '../../models/restaurant';
 
 class RestaurantItem extends HTMLElement {
-    constructor(){
-        super();
-        this.restaurant = new Restaurant();
-        this.restaurant.name = this.getAttribute('data-name');
-    }
+  constructor() {
+    super();
+    this.restaurant = new Restaurant();
+    this.restaurant.name = this.getAttribute('data-name');
+  }
 
-    connectedCallback(){
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render(){
-        console.log(CONFIG);
-        this.innerHTML = `
+  render() {
+    this.innerHTML = `
         <div class="restaurant-item">
           <img src="${CONFIG.BASE_IMAGE_URL_SMALL + this.restaurant.pictureId}" alt="Gambar restoran ${this.restaurant.name}">
           <div class="restaurant-item-city">
@@ -48,7 +39,7 @@ class RestaurantItem extends HTMLElement {
               </div>
           </div>
       </div>`;
-    }
+  }
 }
 
 customElements.define('restaurant-item', RestaurantItem);

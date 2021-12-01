@@ -3,8 +3,8 @@ import '../components/restaurant-item';
 import { createRestaurantItemTemplate } from '../templates/template-creator';
 
 const Home = {
-    async render(){
-        return `
+  async render() {
+    return `
         <section class="hero">
             <img src="./images/hero-image_2.jpg" alt="Gambar hero - chef sedang memasak">
             <div class="hero-title">
@@ -24,20 +24,18 @@ const Home = {
             </div>
         </section>
         `;
-    },
+  },
 
-    async afterRender(){
-        const restaurantApi = await RestaurantApiSource.restaurantList();
+  async afterRender() {
+    const restaurantApi = await RestaurantApiSource.restaurantList();
 
-        if(restaurantApi.error){
-            alert(`Terjadi kesalahan saat mengambil data, ${restaurantApi.message}, hubungi developer untuk perbaikan`);
-        } else {
-            const restaurantContainer = document.querySelector('#restaurant-list');
-            restaurantApi.restaurants.forEach(restaurant => {
-                restaurantContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-            });
-        }
+    if (!restaurantApi.error) {
+      const restaurantContainer = document.querySelector('#restaurant-list');
+      restaurantApi.restaurants.forEach((restaurant) => {
+        restaurantContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
     }
-}
+  },
+};
 
 export default Home;

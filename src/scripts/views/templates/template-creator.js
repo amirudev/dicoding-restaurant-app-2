@@ -1,7 +1,27 @@
-import CONFIG from "../../global/config";
+import CONFIG from '../../global/config';
 
-const createRestaurantItemTemplate = restaurant => {
-    return `<div class="restaurant-item">
+const createListByArrayForMenu = (items) => {
+  let lists = '';
+  items.forEach((item) => {
+    lists += `<li>${item.name}</li>`;
+  });
+  return lists;
+};
+
+const createReviewItemList = (reviews) => {
+  let reviewList = '';
+  reviews.forEach((review) => {
+    reviewList += `
+          <div class="review__review-item">
+              <p class="review__review-item-name">${review.name}</p>
+              <p class="review__review-item-review">${review.review} - <span class="review__review-item-review-date">${review.date}</span></p>
+          </div>`;
+  });
+
+  return reviewList;
+};
+
+const createRestaurantItemTemplate = (restaurant) => `<div class="restaurant-item">
     <img src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}" alt="Gambar restoran ${restaurant.name}">
     <div class="restaurant-item-city">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -25,10 +45,8 @@ const createRestaurantItemTemplate = restaurant => {
         </div>
     </div>
 </div>`;
-}
 
-const createDetailRestaurantItem = restaurant => {
-    return `
+const createDetailRestaurantItem = (restaurant) => `
     <section class="restaurant-detail">
         <div class="detail-main">
             <div class="detail-main__block">
@@ -94,47 +112,20 @@ const createDetailRestaurantItem = restaurant => {
             </div>
         </div>
     </section>`;
-}
 
-const createListByArrayForMenu = items => {
-    let lists = '';
-    items.forEach(item => {
-        lists += `<li>${item.name}</li>`;
-    });
-    return lists;
-}
-
-const createReviewItemList = reviews => {
-    let reviewList = '';
-    reviews.forEach(review => {
-        reviewList += `
-        <div class="review__review-item">
-            <p class="review__review-item-name">${review.name}</p>
-            <p class="review__review-item-review">${review.review} - <span class="review__review-item-review-date">${review.date}</span></p>
-        </div>`;
-    });
-
-    return reviewList;
-}
-
-const createLikeButtonTemplate = () => {
-    return `<button aria-label="like this restaurant" id="likeButton" class="like">
+const createLikeButtonTemplate = () => `<button aria-label="like this restaurant" id="likeButton" class="like">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="25">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
     </button>`;
-}
 
-const createLikedButtonTemplate = () => {
-    return `<button aria-label="unlike this restaurant" id="likeButton" class="like">
+const createLikedButtonTemplate = () => `<button aria-label="unlike this restaurant" id="likeButton" class="like">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" width="25">
             <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
         </svg>
     </button>`;
-}
 
-const createReviewBoxTemplate = () => {
-    return `
+const createReviewBoxTemplate = () => `
         <div class="review-box">
             <div class="review-box__title-box">
                 <h4>Tambahkan Review</h4>
@@ -151,10 +142,8 @@ const createReviewBoxTemplate = () => {
             </div>
         </div>
     `;
-}
 
-const createReviewedBoxTemplate = (reviewText) => {
-    return `
+const createReviewedBoxTemplate = (reviewText) => `
     <div class="review-box">
         <div class="review-box__title-box">
             <h4>Review berhasil ditambahkan</h4>
@@ -165,13 +154,12 @@ const createReviewedBoxTemplate = (reviewText) => {
         </div>
     </div>
     `;
-}
 
-export { 
-    createRestaurantItemTemplate, 
-    createDetailRestaurantItem,
-    createLikeButtonTemplate,
-    createLikedButtonTemplate,
-    createReviewBoxTemplate,
-    createReviewedBoxTemplate,
+export {
+  createRestaurantItemTemplate,
+  createDetailRestaurantItem,
+  createLikeButtonTemplate,
+  createLikedButtonTemplate,
+  createReviewBoxTemplate,
+  createReviewedBoxTemplate,
 };
