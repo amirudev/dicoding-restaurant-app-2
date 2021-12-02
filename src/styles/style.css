@@ -348,8 +348,13 @@ footer .footer-container p {
   font-style: italic;
 }
 
+.restaurant-detail .review-box {
+  background-color: #F7D7DC;
+  padding: 10px 1rem;
+}
+
 .restaurant-detail .review-box .review-box__title-box h4 {
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 
@@ -358,11 +363,10 @@ footer .footer-container p {
 }
 
 .restaurant-detail .review-box .review-box__input-box textarea {
-  border-color: lightgrey;
   height: 60px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
-  padding: 10px;
+  border: 0;
+  padding: 0;
+  margin-bottom: 10px;
 }
 
 .restaurant-detail .review-box .review-box__input-box textarea:focus {
@@ -370,8 +374,9 @@ footer .footer-container p {
 }
 
 .restaurant-detail .review-box .review-box__input-box input {
-  height: 25px;
-  padding: 4px 10px;
+  height: 48px;
+  width: 100%;
+  padding: 0;
   border: none;
 }
 
@@ -382,8 +387,6 @@ footer .footer-container p {
 .restaurant-detail .review-box .review-box__textinput-box {
   width: 100%;
   margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
 }
 
 .restaurant-detail .review-box .review-box__submit-box {
@@ -392,8 +395,8 @@ footer .footer-container p {
 }
 
 .restaurant-detail .review-box .review-box__input-box button {
-  width: 100px;
-  height: 35px;
+  width: 140px;
+  height: 46px;
   background-color: #fa4b3d;
   color: white;
   border: none;
