@@ -11,36 +11,41 @@
     <title>Madang D'Seat Restaurant Finder</title>
 </head>
 <body>
-    <a href="#mainContent" class="skip-link">Langsung ke konten</a>
-    <header>
-        <div class="app-bar">
-            <div class="app-bar__menu">
-              <button id="hamburgerButton">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="22" height="22">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
+    <button class="skip-link" id="skipLink" tabindex="1">Langsung ke konten</button>
+        <header>
+            <div class="app-bar">
+                <div class="app-bar__menu">
+                    <button id="hamburgerButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="22" height="22">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="app-bar__brand">
+                    <img src="./images/logo.png" alt="">
+                </div>
+                <nav id="navigationDrawer" class="app-bar__navigation">
+                    <ul>
+                        <li>
+                            <a href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/favourite">
+                                Favourite
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/wahyuamirulloh/">
+                                About Us
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <div class="app-bar__brand">
-                <img src="./images/logo.png" alt="">
-            </div>
-            <nav id="navigationDrawer" class="app-bar__navigation">
-              <ul>
-                <li>
-                    <a href="/">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="/#/favourite">
-                        Favourite
-                    </a>
-                </li>
-              </ul>
-            </nav>
-        </div>
-      </header>
-        <main id="mainContent"></main>
+        </header>
+        <main id="mainContent" tabindex="0"></main>
         <footer>
             <div class="footer-container">
                 <p>Copyright © 2021 - Madang D'Seat</p>

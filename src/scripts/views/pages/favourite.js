@@ -5,7 +5,7 @@ const Favourite = {
   async render() {
     return `
         <section class="list-restaurant">
-            <div class="responsive-container">
+            <div class="responsive-container" id="focusContent">
                 <h2 class="list-restaurant-title">Restoran Favorit</h2>
                 <div class="restaurant-list" id="restaurant-list">
 

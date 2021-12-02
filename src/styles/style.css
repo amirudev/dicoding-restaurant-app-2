@@ -69,10 +69,6 @@ header {
 .app-bar .app-bar__navigation.open {
   left: 0;
 }
-
-.app-bar .app-bar__navigation ul li {
-  padding: 0 1rem;
-}
   
 .app-bar .app-bar__navigation ul li a {
   display: inline-block;

@@ -11,10 +11,8 @@ import {
 const Detail = {
   async render() {
     return `
-        <section class="detail-restaurant">
-            <div id="restaurant" class="restaurant">
-            </div>
-            <div id="restaurant-recommendation" class="restaurant-recommendation-container"></div>
+        <section class="detail-restaurant" id="focusContent">
+          <div id="restaurant"></div>
         </section>
         `;
   },

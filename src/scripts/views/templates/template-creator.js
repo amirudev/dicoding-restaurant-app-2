@@ -74,12 +74,12 @@ const createDetailRestaurantItem = (restaurant) => `
             </div>
             <div class="main-content description-container">
                 <div class="main-content__block">
-                    <h3 class="main-content__title">Deskripsi</h3>
+                    <h3 class="main-content__title" id="about">Deskripsi</h3>
                     <hr>
                     <p>${restaurant.description}</p>
                 </div>
                 <div class="main-content__block">
-                    <h3 class="main-content__title">Menu</h3>
+                    <h3 class="main-content__title" id="menu">Menu</h3>
                     <hr>
                     <div class="main-content__menu-container">
                         <div>
@@ -99,7 +99,7 @@ const createDetailRestaurantItem = (restaurant) => `
             </div>
         </div>
         <div class="detail-sidebar">
-            <div class="main-content__block review">
+            <div class="main-content__block review" id="review">
                 <div class="review__review-title">
                     <h3 class="main-content__title">Review</h3>
                 </div>
